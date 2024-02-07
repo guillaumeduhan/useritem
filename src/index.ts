@@ -1,5 +1,3 @@
-export function add(a: number, b: number): number {
-  return a + b;
+export const testPackage = () => {
+    return "Hello World!"
 }
-
-console.log(add(3, 5)); //output: 8
