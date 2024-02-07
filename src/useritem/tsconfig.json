@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+     "module": "es6",
+     "moduleResolution": "node",
+     "allowJs": true,
+     "resolveJsonModule": true,
+     "target": "es6",
+     "jsx": "react",
+     "strict": true,
+     "esModuleInterop": true,
+     "skipLibCheck": true,
+     "forceConsistentCasingInFileNames": true
+    }
+}

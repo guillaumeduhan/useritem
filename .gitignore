@@ -1,4 +1,6 @@
 /node_modules
+/src/useritem/node_modules
+/src/useritem/build
 
 # Ignore test-related files
 /coverage.data
