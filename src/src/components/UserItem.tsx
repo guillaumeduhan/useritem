@@ -88,13 +88,13 @@ const UserItem: React.FC<UserItemProps> = (props) => {
       </div>}
       {!loading && infos && <div className={`useritem--infos truncate`}>
         {title && (<div className={`truncate useritem--infos--title`}>
-          <div className={`w-full ${reverse ? "text-right" : "text-left"}`} style={{ display: "flex", alignItems: "center", gap: "2px" }}>{title} {verified && <img src={verifiedSVG} alt="" />}</div>
+          <div className={`w-full ${reverse ? "text-right" : "text-left"}`} style={{ display: "flex", alignItems: "center", gap: "2px" }}>{title} {verified && <img src={verifiedSVG.src} alt="" />}</div>
         </div>
         )}
         {description && <div className={`truncate useritem--infos--description  ${reverse ? "text-right" : "text-left"}`}>{description}</div>}
       </div>}
       {!loading && dropdown && <div>
-        <img src={arrowDownSVG} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
+        <img src={arrowDownSVG.src} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
       </div>}
     </button>
     {dropdown && !loading && children && (

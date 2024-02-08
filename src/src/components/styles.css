@@ -47,7 +47,6 @@
   z-index: 99;
   height: 64px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 8px;
   padding: 4px 12px;
@@ -166,8 +165,8 @@
 /* status */
 
 .useritem--item--status {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   position: absolute;
   bottom: -1px;
   right: -1px;
