@@ -24,11 +24,6 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.(sa|sc|c)ss$/i,
-        include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-      },
       { test: /\.svg$/, loader: 'svg-inline-loader' }
     ]
   },
