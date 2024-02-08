@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: "./src/useritem/src/components/UserItem.tsx",
+  entry: "./src/src/components/UserItem.tsx",
   output: {
     path: path.resolve("build"),
     filename: "index.js",
@@ -15,16 +15,21 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.scss$/i,
+        test: /\.(sa|sc|c)ss$/i,
         include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      }
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      { test: /\.svg$/, loader: 'svg-inline-loader' }
     ]
   },
   resolve: {

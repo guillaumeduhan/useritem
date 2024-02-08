@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ReactSVG } from 'react-svg';
+import verifiedSVG from '../assets/verified.svg';
+import arrowDown from '../assets/arrowDown.svg';
+import settings from '../assets/settings.svg';
 import '../styles/index.scss';
 
 type UserItemProps = {
@@ -103,7 +105,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
           {title && (
             <div className={`flex gap-[2px] ${reverse ? "justify-end" : ""}`}>
               <p className="text-right useritem--title">{title}</p>
-              {verified && <ReactSVG src="./Icons/Verified.svg" />}
+              {verified && <img src={verifiedSVG.src} />}
             </div>
           )}
           {description && <p className="useritem--description">{description}</p>}
@@ -117,8 +119,8 @@ const UserItem: React.FC<UserItemProps> = (props) => {
       )}
       {!loading && (
         <div className="flex items-center justify-end">
-          {dropdown && !icon && <ReactSVG src="./Icons/ArrowDown.svg" />}
-          {!dropdown && icon && <ReactSVG src="./Icons/Settings.svg" />}
+          {dropdown && !icon && <img src={arrowDown.src} />}
+          {!dropdown && icon && <img src={settings.src} />}
         </div>
       )}
     </button>
