@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import arrowDown from '../assets/arrowDown.svg';
-import settings from '../assets/settings.svg';
-import verifiedSVG from '../assets/verified.svg';
-import '../styles/index.scss';
+import arrowDownSVG from "./Icons/arrowdown.svg";
+import verifiedSVG from "./Icons/verified.svg";
+import "./styles.css";
 
 type UserItemProps = {
   avatar?: boolean;
@@ -13,10 +12,10 @@ type UserItemProps = {
   description?: string;
   disabled?: boolean;
   dropdown?: boolean;
-  icon?: boolean;
   infos?: boolean;
   reverse?: boolean;
   loading?: boolean;
+  onClick?: (e: any) => void;
   online?: boolean;
   shadow?: boolean;
   squared?: boolean;
@@ -30,19 +29,19 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   const {
     avatar = true,
     avatarUrl = "",
-    border,
+    border = true,
     children,
     backgroundColor,
     dropdown,
     disabled,
     description = "johndoe@mail.com",
-    icon,
     infos = true,
     reverse,
     loading,
+    onClick,
     online,
-    shadow = false,
-    squared,
+    shadow = true,
+    squared = false,
     status,
     style,
     title = "John Doe",
@@ -50,7 +49,8 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   } = props;
   const [open, setOpen] = useState<boolean>(false);
 
-  const onClickItem = () => {
+  const onClickItem = (e: any) => {
+    if (onClick) return onClick(e);
     if (dropdown) return setOpen(!open);
   };
 
@@ -65,77 +65,51 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     setOpen(false);
   }, [loading]);
 
-  return <div className="useritem">
-    <button
-      onClick={onClickItem}
-      className={`useritem--item ${infos ? "gap-[8px]" : ""
-        } ${disabled ? "useritem--disabled" : ""} ${loading ? "useritem--loading" : ""
-        } ${border ? "border" : ""} ${border && shadow ? "shadow" : ""} ${squared ? "" : "rounded-[8px]"
-        } ${reverse ? "flex-row-reverse" : ""}`}
-      style={style}
-    >
-      {avatar && (
-        <div className="relative">
-          <div
-            className={`useritem--avatar transition ease-in duration-100 ${squared ? "" : "rounded-full"}`}
-            style={{
-              backgroundColor: backgroundColor || "#10b981",
-              backgroundImage:
-                !loading && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
-              backgroundSize: "cover",
-            }}
-          >
-            {!loading && avatarUrl === "" && <span>{getInitials()}</span>}
-          </div>
-          {!loading && status && (
-            <div
-              className={`absolute ${squared ? "-bottom-1 -right-1" : "bottom-0 right-0"
-                }`}
-            >
-              <div
-                className={`${online ? "bg-green-500" : "bg-neutral-200"
-                  } rounded-full h-4 w-4 border-2 border-white`}
-              />
-            </div>
-          )}
+  return <div className={`useritem ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
+    <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
+      {avatar && <div className="relative">
+        <div
+          className={`useritem--avatar ${loading ? "useritem--loading" : ""}`}
+          style={{
+            backgroundColor: loading ? "lightgray" : backgroundColor || "#10b981",
+            backgroundImage:
+              !loading && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
+            backgroundSize: "cover",
+            borderRadius: squared ? "" : "32px"
+          }}
+        >
+          {!loading && avatarUrl === "" && <span>{getInitials()}</span>}
         </div>
-      )}
-      {!loading && infos && (
-        <div className={`flex flex-col grow truncate ${reverse ? "justify-end" : ""}`}>
-          {title && (
-            <div className={`flex gap-[2px] ${reverse ? "justify-end" : ""}`}>
-              <p className="text-right useritem--title">{title}</p>
-              {verified && <img src={verifiedSVG.src} />}
-            </div>
-          )}
-          {description && <p className="useritem--description">{description}</p>}
+        {!loading && status && <div className={`useritem--item--status ${squared ? "useritem--item--status--squared" : ""} ${online ? "useritem--item--status--online" : ""}`} />}
+      </div>}
+      {loading && <div style={{ display: "grid", gap: "8px" }}>
+        <div className="useritem--loading" style={{ width: "120px", height: "16px", background: "lightgray" }} />
+        <div className="useritem--loading" style={{ width: "180px", height: "16px", background: "lightgray" }} />
+      </div>}
+      {!loading && infos && <div className={`useritem--infos truncate`}>
+        {title && (<div className={`truncate useritem--infos--title`}>
+          <div className={`w-full ${reverse ? "text-right" : "text-left"}`} style={{ display: "flex", alignItems: "center", gap: "2px" }}>{title} {verified && <img src={verifiedSVG} alt="" />}</div>
         </div>
-      )}
-      {loading && (
-        <div className="flex flex-col gap-2 grow">
-          <div className="w-[160px] h-4 useritem--loading--line" />
-          <div className="w-[220px] h-4 useritem--loading--line" />
-        </div>
-      )}
-      {!loading && (
-        <div className="flex items-center justify-end">
-          {dropdown && !icon && <img src={arrowDown.src} />}
-          {!dropdown && icon && <img src={settings.src} />}
-        </div>
-      )}
+        )}
+        {description && <div className={`truncate useritem--infos--description  ${reverse ? "text-right" : "text-left"}`}>{description}</div>}
+      </div>}
+      {!loading && dropdown && <div>
+        <img src={arrowDownSVG} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
+      </div>}
     </button>
-    {dropdown && !loading && (
+    {dropdown && !loading && children && (
       <div
-        className={`useritem--dropdown ${open
-          ? "translate-y-0 z-[99] opacity-100"
-          : "translate-y-[-100%] -z-[99] opacity-0"
-          } ${border ? "border" : ""} ${shadow ? "shadow" : ""} ${squared ? "" : ""
-          }`}
+        className={`useritem--dropdown ${open ? "useritem--dropdown--open" : "useritem--dropdown--closed"} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"}`}
+        style={{
+          borderRadius: squared ? "0px" : "0px",
+          borderTopRightRadius: squared ? "0px" : "0px",
+          borderTopLeftRadius: squared ? "0px" : "0px",
+        }}
       >
         {children}
       </div>
     )}
-  </div>
+  </div >
 };
 
 export default UserItem;
