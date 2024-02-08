@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import verifiedSVG from '../assets/verified.svg';
 import arrowDown from '../assets/arrowDown.svg';
 import settings from '../assets/settings.svg';
+import verifiedSVG from '../assets/verified.svg';
 import '../styles/index.scss';
 
 type UserItemProps = {
@@ -79,7 +79,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
           <div
             className={`useritem--avatar transition ease-in duration-100 ${squared ? "" : "rounded-full"}`}
             style={{
-              backgroundColor: backgroundColor || "deepskyblue",
+              backgroundColor: backgroundColor || "#10b981",
               backgroundImage:
                 !loading && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
               backgroundSize: "cover",
