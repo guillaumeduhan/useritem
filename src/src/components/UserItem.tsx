@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import arrowDownSVG from "./Icons/arrowdown.svg";
 import verifiedSVG from "./Icons/verified.svg";
@@ -64,6 +65,8 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   React.useEffect(() => {
     setOpen(false);
   }, [loading]);
+
+  if (!window.document) return <></>
 
   return <div className={`useritem ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
     <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
