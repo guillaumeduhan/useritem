@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import arrowDownSVG from "./Icons/arrowdown.svg";
 import verifiedSVG from "./Icons/verified.svg";
 import "./styles.css";
@@ -28,7 +28,7 @@ type UserItemProps = {
 const UserItem: React.FC<UserItemProps> = (props) => {
   const {
     avatar = true,
-    avatarUrl = "",
+    avatarUrl,
     border = true,
     children,
     backgroundColor,
@@ -47,7 +47,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     title = "John Doe",
     verified,
   } = props;
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = React.useState<boolean>(false);
 
   const onClickItem = (e: any) => {
     if (onClick) return onClick(e);
@@ -61,7 +61,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     return initials.join("");
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setOpen(false);
   }, [loading]);
 
@@ -73,7 +73,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
           style={{
             backgroundColor: loading ? "lightgray" : backgroundColor || "#10b981",
             backgroundImage:
-              !loading && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
+              !loading && avatarUrl && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
             backgroundSize: "cover",
             borderRadius: squared ? "" : "32px"
           }}
