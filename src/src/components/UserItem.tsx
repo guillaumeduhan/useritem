@@ -62,12 +62,6 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     return initials.join("");
   };
 
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') setOpen(false);
-  }, [loading]);
-
-  if (typeof window !== 'undefined' && !document) return <></>
-
   return <div className={`useritem ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
     <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
       {avatar && <div className="relative">
@@ -81,7 +75,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
             borderRadius: squared ? "" : "32px"
           }}
         >
-          {!loading && avatarUrl === "" && <span>{getInitials()}</span>}
+          {!loading && !avatarUrl && <span>{getInitials()}</span>}
         </div>
         {!loading && status && <div className={`useritem--item--status ${squared ? "useritem--item--status--squared" : ""} ${online ? "useritem--item--status--online" : ""}`} />}
       </div>}
@@ -112,7 +106,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
         {children}
       </div>
     )}
-  </div >
+  </div>
 };
 
 export default UserItem;

@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: "./src/src/components/UserItem.tsx",
+  entry: "./src/src/components/useritem",
   plugins: [],
   output: {
     path: path.resolve("build"),

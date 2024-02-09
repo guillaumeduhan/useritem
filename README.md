@@ -18,6 +18,14 @@ Then:
 
 ```bash
 ...
+
+// React
+import UserItem from 'useritem';
+
+// Next.js, only on client
+const UserItem = dynamic(() => import("useritem"), { ssr: false });
+
+...
 <UserItem
   title="John Doe"
   description="johndoe@mail.com"
