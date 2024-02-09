@@ -27,6 +27,8 @@ type UserItemProps = {
 };
 
 const UserItem: React.FC<UserItemProps> = (props) => {
+  if (!document) return <></>
+
   const {
     avatar = true,
     avatarUrl,
@@ -63,10 +65,8 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   };
 
   React.useEffect(() => {
-    setOpen(false);
+    if (document) setOpen(false);
   }, [loading]);
-
-  if (!window.document) return <></>
 
   return <div className={`useritem ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
     <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
