@@ -109,7 +109,7 @@
 /* styles */
 
 .useritem--border {
-  border: 1px solid lightgray;
+  border: 1px solid #ededed;
 }
 
 .useritem--item--border--rounded {
