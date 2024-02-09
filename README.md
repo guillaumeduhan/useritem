@@ -2,6 +2,8 @@
 
 A simple, fully customizable component for displaying your users.
 
+![useritem](https://www.useritem.dev/boom.png)
+
 [Website](https://dub.sh/useritem)
 [Github](https://dub.sh/useritem-github) — feel free to give a star!
 
