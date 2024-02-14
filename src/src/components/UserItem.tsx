@@ -41,7 +41,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     loading,
     onClick,
     online,
-    shadow = true,
+    shadow = false,
     squared = false,
     status,
     style,
@@ -62,7 +62,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     return initials.join("");
   };
 
-  return <div className={`useritem ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
+  return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
     <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
       {avatar && <div className="relative">
         <div

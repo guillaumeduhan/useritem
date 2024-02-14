@@ -9,25 +9,22 @@ A simple, fully customizable component for displaying your users.
 
 ### Get Started
 
-To use the UserItem component in your React application, you can install it via npm or yarn:
+To use the UserItem component in your React/Next.js application, you can install it via npm or yarn:
 
 ```bash
 npm install useritem
+```
+
+```bash
 yarn add useritem
 ```
 
-Then:
+## React
 
 ```bash
 ...
-
-// React
 import UserItem from 'useritem';
 
-// Next.js, only on client
-const UserItem = dynamic(() => import("useritem"), { ssr: false });
-
-...
 <UserItem
   title="John Doe"
   description="johndoe@mail.com"
@@ -37,13 +34,26 @@ const UserItem = dynamic(() => import("useritem"), { ssr: false });
   dropdown={true}
   verified={true}
   onClick={(e) => console.log("User item clicked!", e)}
->
-  {/* Content for dropdown */}
-  <div>
-    <p>Dropdown content goes here</p>
-  </div>
-</UserItem>
+/>
+```
+
+## Next.js
+
+```bash
 ...
+// Next.js, only on client for now
+const UserItem = dynamic(() => import("useritem"), { ssr: false });
+
+<UserItem
+  title="John Doe"
+  description="johndoe@mail.com"
+  avatarUrl="https://example.com/avatar.jpg"
+  online={true}
+  status={true}
+  dropdown={true}
+  verified={true}
+  onClick={(e) => console.log("User item clicked!", e)}
+/>
 ```
 
 | Prop            | Description                                                             | Default Value | Status      |
@@ -52,7 +62,7 @@ const UserItem = dynamic(() => import("useritem"), { ssr: false });
 | `avatarUrl`     | URL of the user's avatar image.                                         |               | Ready       |
 | `border`        | Set to `true` to display a border around the component.                 | `true`        | Ready       |
 | `backgroundColor` | Background color of the avatar.                                       |               | Ready       |
-| `description`   | User description or email.                                              |               | Ready       |
+| `description`   | User description or email.                                              | `johndoe@gmail.com`              | Ready       |
 | `disabled`      | Set to `true` to disable the user item.                                 |               | Ready       |
 | `dropdown`      | Set to `true` to enable dropdown functionality.                         |               | Not Ready   |
 | `infos`         | Set to `true` to display user title and description.                    | `true`        | Ready       |
@@ -60,7 +70,7 @@ const UserItem = dynamic(() => import("useritem"), { ssr: false });
 | `loading`       | Set to `true` to display a loading state.                               |               | Ready       |
 | `onClick`       | Function to handle click events on the user item.                       |               | Ready       |
 | `online`        | Set to `true` to indicate user is online.                               |               | Ready       |
-| `shadow`        | Set to `true` to add a shadow effect.                                   | `true`        | Ready       |
+| `shadow`        | Set to `true` to add a shadow effect.                                   | `false`        | Ready       |
 | `squared`       | Set to `true` to have squared corners.                                  | `false`       | Ready       |
 | `status`        | Set to `true` to display a status indicator.                            |               | Ready       |
 | `style`         | Custom CSS styles for the component.                                    |               | Ready       |

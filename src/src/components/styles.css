@@ -36,8 +36,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  max-width: 275px;
-  width: 100%;
+  width: fit-content;
 }
 
 .useritem--item {
@@ -85,6 +84,7 @@
 
 .useritem--infos {
   width: 100%;
+  max-width: 250px;
 }
 
 .useritem--infos--title {
