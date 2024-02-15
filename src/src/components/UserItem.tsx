@@ -7,8 +7,8 @@ import "./styles.css";
 type UserItemProps = {
   avatar?: boolean;
   avatarUrl?: string;
+  children?: React.ReactNode,
   border?: boolean;
-  children?: React.ReactNode;
   backgroundColor?: string;
   description?: string;
   disabled?: boolean;
@@ -105,7 +105,7 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
         <img src={arrowDownSVG.src} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
       </div>}
     </button>
-    {dropdown && !loading && children && (
+    {/* {dropdown && !loading && children && (
       <div
         className={`useritem--dropdown ${open ? "useritem--dropdown--open" : "useritem--dropdown--closed"} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"}`}
         style={{
@@ -116,7 +116,7 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
       >
         {children}
       </div>
-    )}
+    )} */}
   </div>
 };
 
