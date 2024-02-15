@@ -4,7 +4,7 @@ import arrowDownSVG from "./Icons/arrowdown.svg";
 import verifiedSVG from "./Icons/verified.svg";
 import "./styles.css";
 
-type UserItemProps = {
+export type UserItemProps = {
   avatar?: boolean;
   avatarUrl?: string;
   children?: React.ReactNode,
@@ -60,11 +60,11 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
   const getInitials = () => {
     const INITIALS = "AA"
     if (!title) return INITIALS;
-    const words = title.split(" ") || [];
+    const words = title.split(" ");
     if (!words) return INITIALS;
     if (words.length === 0) return INITIALS;
     const initials = words.map((word) => {
-      if (word[0] && word[0].length > 0) word[0].toUpperCase()
+      if (word[0]) return word[0].toUpperCase()
     });
     return initials.join("");
   };
