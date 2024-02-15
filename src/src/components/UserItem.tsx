@@ -27,7 +27,7 @@ type UserItemProps = {
   verified?: boolean;
 };
 
-const UserItem: React.FC<UserItemProps> = (props) => {
+const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
   const {
     avatar = true,
     avatarUrl,
@@ -49,7 +49,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     style,
     title = "John Doe",
     verified,
-  } = props;
+  }: UserItemProps = props;
   const [open, setOpen] = React.useState<boolean>(false);
 
   const onClickItem = (e: any) => {
@@ -58,9 +58,11 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   };
 
   const getInitials = () => {
-    if (!title) return "AA";
+    const INITIALS = "AA"
+    if (!title) return INITIALS;
     const words = title.split(" ") || [];
-    if (words.length === 0) return "AA";
+    if (!words) return INITIALS;
+    if (words.length === 0) return INITIALS;
     const initials = words.map((word) => word[0].toUpperCase());
     return initials.join("");
   };
