@@ -59,8 +59,8 @@ const UserItem: React.FC<UserItemProps> = (props) => {
 
   const getInitials = () => {
     if (!title) return "AA";
-    const words = title.split(" ");
-    if (!words) return "AA";
+    const words = title.split(" ") || [];
+    if (words.length === 0) return "AA";
     const initials = words.map((word) => word[0].toUpperCase());
     return initials.join("");
   };
