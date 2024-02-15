@@ -70,7 +70,7 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
   };
 
   return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`}>
-    <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`} style={{
+    <div onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`} style={{
       ...{
         height: noPadding ? 'auto' : '64px',
         padding: noPadding ? 0 : '2px 10px',
@@ -81,7 +81,7 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
         <div
           className={`useritem--avatar ${loading ? "useritem--loading" : ""}`}
           style={{
-            backgroundColor: loading ? "lightgray" : backgroundColor || "#10b981",
+            backgroundColor: loading ? "lightgray" : avatarUrl ? 'transparent' : backgroundColor || "#10b981",
             backgroundImage:
               !loading && avatarUrl && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
             backgroundSize: "cover",
@@ -106,7 +106,7 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
       {!loading && dropdown && <div>
         <img src={arrowDownSVG.src} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
       </div>}
-    </button>
+    </div>
     {/* {dropdown && !loading && children && (
       <div
         className={`useritem--dropdown ${open ? "useritem--dropdown--open" : "useritem--dropdown--closed"} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"}`}

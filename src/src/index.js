@@ -4,5 +4,5 @@ import UserItem from './components/UserItem';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<React.StrictMode>
-  <UserItem title="Guillaume Duhan" backgroundColor="#323444" noPadding />
+  <UserItem title="Guillaume Duhan" backgroundColor="#323444" />
 </React.StrictMode>);

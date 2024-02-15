@@ -38,6 +38,9 @@
   -ms-user-select: none;
   user-select: none;
   width: fit-content;
+  outline: none;
+  background: transparent;
+  border: 0px;
 }
 
 .useritem--item {
@@ -54,14 +57,6 @@
 
 .useritem--item--reverse {
   flex-direction: row-reverse;
-}
-
-/* button */
-
-.useritem button {
-  outline: none;
-  background: transparent;
-  border: 0px;
 }
 
 /* avatar */
