@@ -16,6 +16,7 @@ type UserItemProps = {
   infos?: boolean;
   reverse?: boolean;
   loading?: boolean;
+  noPadding?: boolean;
   onClick?: (e: any) => void;
   online?: boolean;
   shadow?: boolean;
@@ -35,12 +36,13 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     backgroundColor,
     dropdown,
     disabled,
-    description = "johndoe@mail.com",
+    description,
     infos = true,
     reverse,
     loading,
     onClick,
     online,
+    noPadding,
     shadow = false,
     squared = false,
     status,
@@ -58,12 +60,19 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   const getInitials = () => {
     if (!title) return "AA";
     const words = title.split(" ");
+    if (!words) return "AA";
     const initials = words.map((word) => word[0].toUpperCase());
     return initials.join("");
   };
 
-  return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
-    <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
+  return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`}>
+    <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`} style={{
+      ...{
+        height: noPadding ? 'auto' : '64px',
+        padding: noPadding ? 0 : '2px 10px',
+      },
+      ...style
+    }}>
       {avatar && <div className="relative">
         <div
           className={`useritem--avatar ${loading ? "useritem--loading" : ""}`}
