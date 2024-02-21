@@ -4,4 +4,4 @@ gt:
 	git push
 
 publish:
-	npm run build && make gt && npm publish
+	npm i && npm run build && make gt && npm publish
