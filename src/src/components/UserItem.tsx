@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import arrowDownSVG from "./Icons/arrowdown.svg";
-import verifiedSVG from "./Icons/verified.svg";
+import Verified from "./Icons/Verified";
 import "./styles.css";
 
 export type UserItemProps = {
@@ -98,13 +97,13 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
       </div>}
       {!loading && infos && <div className={`useritem--infos truncate`}>
         {title && (<div className={`useritem--infos--title`}>
-          <div className={`w-full ${reverse ? "text-right" : "text-left"}`} style={{ display: "flex", alignItems: "center", gap: "2px" }}>{title} {verified && <img src={verifiedSVG} alt="" />}</div>
+          <div className={`w-full ${reverse ? "text-right" : "text-left"}`} style={{ display: "flex", alignItems: "center", gap: "2px" }}>{title} {verified && <Verified></Verified>}</div>
         </div>
         )}
         {description && <div className={`truncate useritem--infos--description  ${reverse ? "text-right" : "text-left"}`}>{description}</div>}
       </div>}
       {!loading && dropdown && <div>
-        <img src={arrowDownSVG} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
+        {/* <img src={arrowDownSVG} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} /> */}
       </div>}
     </div>
     {/* {dropdown && !loading && children && (
