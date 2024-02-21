@@ -4,11 +4,11 @@ import arrowDownSVG from "./Icons/arrowdown.svg";
 import verifiedSVG from "./Icons/verified.svg";
 import "./styles.css";
 
-type UserItemProps = {
+export type UserItemProps = {
   avatar?: boolean;
   avatarUrl?: string;
+  children?: React.ReactNode,
   border?: boolean;
-  children?: React.ReactNode;
   backgroundColor?: string;
   description?: string;
   disabled?: boolean;
@@ -16,6 +16,7 @@ type UserItemProps = {
   infos?: boolean;
   reverse?: boolean;
   loading?: boolean;
+  noPadding?: boolean;
   onClick?: (e: any) => void;
   online?: boolean;
   shadow?: boolean;
@@ -26,7 +27,7 @@ type UserItemProps = {
   verified?: boolean;
 };
 
-const UserItem: React.FC<UserItemProps> = (props) => {
+const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
   const {
     avatar = true,
     avatarUrl,
@@ -35,19 +36,20 @@ const UserItem: React.FC<UserItemProps> = (props) => {
     backgroundColor,
     dropdown,
     disabled,
-    description = "johndoe@mail.com",
+    description,
     infos = true,
     reverse,
     loading,
     onClick,
     online,
+    noPadding,
     shadow = false,
     squared = false,
     status,
     style,
     title = "John Doe",
     verified,
-  } = props;
+  }: UserItemProps = props;
   const [open, setOpen] = React.useState<boolean>(false);
 
   const onClickItem = (e: any) => {
@@ -56,19 +58,30 @@ const UserItem: React.FC<UserItemProps> = (props) => {
   };
 
   const getInitials = () => {
-    if (!title) return "AA";
+    const INITIALS = "AA"
+    if (!title) return INITIALS;
     const words = title.split(" ");
-    const initials = words.map((word) => word[0].toUpperCase());
+    if (!words) return INITIALS;
+    if (words.length === 0) return INITIALS;
+    const initials = words.map((word) => {
+      if (word[0]) return word[0].toUpperCase()
+    });
     return initials.join("");
   };
 
-  return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`} style={style}>
-    <button onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`}>
+  return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`}>
+    <div onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`} style={{
+      ...{
+        height: noPadding ? 'auto' : '64px',
+        padding: noPadding ? 0 : '2px 10px',
+      },
+      ...style
+    }}>
       {avatar && <div className="relative">
         <div
           className={`useritem--avatar ${loading ? "useritem--loading" : ""}`}
           style={{
-            backgroundColor: loading ? "lightgray" : backgroundColor || "#10b981",
+            backgroundColor: loading ? "lightgray" : avatarUrl ? 'transparent' : backgroundColor || "#10b981",
             backgroundImage:
               !loading && avatarUrl && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
             backgroundSize: "cover",
@@ -93,8 +106,8 @@ const UserItem: React.FC<UserItemProps> = (props) => {
       {!loading && dropdown && <div>
         <img src={arrowDownSVG} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} />
       </div>}
-    </button>
-    {dropdown && !loading && children && (
+    </div>
+    {/* {dropdown && !loading && children && (
       <div
         className={`useritem--dropdown ${open ? "useritem--dropdown--open" : "useritem--dropdown--closed"} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"}`}
         style={{
@@ -105,7 +118,7 @@ const UserItem: React.FC<UserItemProps> = (props) => {
       >
         {children}
       </div>
-    )}
+    )} */}
   </div>
 };
 

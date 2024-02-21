@@ -1,4 +1,5 @@
-/* tailwindcss addons*/
+/* useritem */
+/*tailwindcss addons*/
 
 .relative {
   position: relative;
@@ -37,6 +38,9 @@
   -ms-user-select: none;
   user-select: none;
   width: fit-content;
+  outline: none;
+  background: transparent;
+  border: 0px;
 }
 
 .useritem--item {
@@ -44,11 +48,9 @@
   cursor: pointer;
   position: relative;
   z-index: 99;
-  height: 64px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px;
   transition: ease-in 100ms;
   width: 100%;
 }
@@ -57,19 +59,11 @@
   flex-direction: row-reverse;
 }
 
-/* button */
-
-.useritem button {
-  outline: none;
-  background: transparent;
-  border: 0px;
-}
-
 /* avatar */
 
 .useritem--avatar {
-  min-width: 42px;
-  min-height: 42px;
+  min-width: 46px;
+  min-height: 46px;
   overflow: hidden;
   color: white;
   display: flex;
@@ -117,15 +111,15 @@
 }
 
 .useritem--shadow {
-  -webkit-box-shadow: 0px 2px 15px 4px rgba(0,0,0,0.05);
-  -moz-box-shadow: 0px 2px 15px 4px rgba(0,0,0,0.05);
-  box-shadow: 0px 2px 15px 4px rgba(0,0,0,0.05);
+  -webkit-box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.05);
 }
 
 .useritem--disabled {
   opacity: 0.5;
-  cursor: none!important;
-  pointer-events: none!important;
+  cursor: none !important;
+  pointer-events: none !important;
 }
 
 /* dropdown */
@@ -134,7 +128,7 @@
   z-index: 99;
   position: absolute;
   top: 63px;
-  left:-1px;
+  left: -1px;
   right: -1px;
   background-color: white;
   min-width: 100%;
@@ -159,7 +153,7 @@
 }
 
 .useritem--loading--state {
-    pointer-events: none!important;
+  pointer-events: none !important;
 }
 
 /* status */
