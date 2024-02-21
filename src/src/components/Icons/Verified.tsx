@@ -1,16 +1,7 @@
-export default function VerifiedIcon() {
+import Verified from './verified.svg'
+
+export default function VerifiedComponent() {
   return <div>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      fill="none"
-      viewBox="0 0 20 20"
-    >
-      <path
-        fill="#000"
-        d="M19.167 10l-2.034-2.325.284-3.075-3.009-.683-1.575-2.667L10 2.467 7.167 1.25 5.592 3.908l-3.009.675.284 3.084L.833 10l2.034 2.325-.284 3.083 3.009.684 1.575 2.658L10 17.525l2.833 1.217 1.575-2.659 3.009-.683-.284-3.075L19.167 10zm-11.35 3.342l-1.984-2a.83.83 0 010-1.175l.059-.059a.84.84 0 011.183 0l1.342 1.35 4.291-4.3a.84.84 0 011.184 0l.058.059a.83.83 0 010 1.175l-4.933 4.95a.86.86 0 01-1.2 0z"
-      ></path>
-    </svg>
+    <Verified />
   </div>
 }

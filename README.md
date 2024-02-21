@@ -19,38 +19,24 @@ npm install useritem
 yarn add useritem
 ```
 
-## React
+## React & Next.js
 
 ```bash
 ...
+// React
 import UserItem from 'useritem';
 
-<UserItem
-  title="John Doe"
-  description="johndoe@mail.com"
-  avatarUrl="https://example.com/avatar.jpg"
-  online={true}
-  status={true}
-  dropdown={true}
-  verified={true}
-  onClick={(e) => console.log("User item clicked!", e)}
-/>
-```
-
-## Next.js
-
-```bash
-...
 // Next.js, only on client for now
 const UserItem = dynamic(() => import("useritem"), { ssr: false });
+```
 
+```
 <UserItem
   title="John Doe"
   description="johndoe@mail.com"
   avatarUrl="https://example.com/avatar.jpg"
   online={true}
   status={true}
-  dropdown={true}
   verified={true}
   onClick={(e) => console.log("User item clicked!", e)}
 />
