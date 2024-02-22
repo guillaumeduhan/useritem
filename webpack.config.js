@@ -14,7 +14,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.js$/,
@@ -22,8 +22,8 @@ module.exports = {
         loader: "babel-loader"
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.(s(a|c)ss)$/,
+        use: ['css-loader', 'sass-loader']
       },
       {
         test: /\.svg$/,
@@ -32,7 +32,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.css'],
+    extensions: ['*', '.tsx', '.ts', '.js', '.css', 'scss'],
   },
   externals: {
     react: "react"

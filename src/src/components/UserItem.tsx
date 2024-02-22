@@ -1,62 +1,43 @@
-"use client";
-import React from "react";
-import Verified from './Icons/verified.svg'
-import "./styles.css";
+import "./style.scss";
 
 export type UserItemProps = {
-  avatar?: boolean;
-  avatarUrl?: string;
-  children?: React.ReactNode,
-  border?: boolean;
-  backgroundColor?: string;
+  avatar?: boolean,
+  avatarUrl?: string,
+  border?: boolean,
+  color?: string;
   description?: string;
   disabled?: boolean;
-  dropdown?: boolean;
-  infos?: boolean;
-  reverse?: boolean;
+  onClick?: (event: MouseEvent) => void;
   loading?: boolean;
-  noPadding?: boolean;
-  onClick?: (e: any) => void;
-  online?: boolean;
-  shadow?: boolean;
+  reverse?: boolean;
   squared?: boolean;
-  status?: boolean;
+  shadow?: boolean;
   style?: React.CSSProperties;
   title?: string;
-  verified?: boolean;
 };
 
-const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
-  const {
-    avatar = true,
-    avatarUrl,
-    border = true,
-    children,
-    backgroundColor,
-    dropdown,
-    disabled,
-    description,
-    infos = true,
-    reverse,
-    loading,
-    onClick,
-    online,
-    noPadding,
-    shadow = false,
-    squared = false,
-    status,
-    style,
-    title = "John Doe",
-    verified,
-  }: UserItemProps = props;
-  const [open, setOpen] = React.useState<boolean>(false);
-
+const UserItem: React.FC<UserItemProps> = ({
+  avatar = true,
+  avatarUrl,
+  border = true,
+  color,
+  description,
+  disabled,
+  loading,
+  onClick,
+  reverse,
+  squared,
+  shadow,
+  style,
+  title
+}: UserItemProps) => {
   const onClickItem = (e: any) => {
+    if (loading) return;
     if (onClick) return onClick(e);
-    if (dropdown) return setOpen(!open);
   };
 
   const getInitials = () => {
+    if (avatarUrl) return;
     const INITIALS = "AA"
     if (!title) return INITIALS;
     const words = title.split(" ");
@@ -68,57 +49,53 @@ const UserItem: React.FC<UserItemProps> = (props: UserItemProps) => {
     return initials.join("");
   };
 
-  return <div className={`useritem ${infos ? 'useritem--infos' : ''} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"} ${shadow ? "useritem--shadow" : ""} ${loading ? "useritem--loading--state" : ""}`}>
-    <div onClick={onClickItem} className={`useritem--item ${disabled ? "useritem--disabled" : ""} ${reverse ? "useritem--item--reverse" : ""}`} style={{
-      ...{
-        height: noPadding ? 'auto' : '64px',
-        padding: noPadding ? 0 : '2px 10px',
-      },
-      ...style
+  if (loading) return <div className="useritem useritem--loading" style={{
+    border: border ? '1px solid #e5e5e5' : '',
+    borderRadius: squared ? '' : '8px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: reverse ? 'row-reverse' : 'row',
+    boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
+    ...style
+  }}>
+    <div className="useritem--loading--avatar" style={{
+      borderRadius: squared ? '' : '100px',
+    }}></div>
+    <div style={{
+      display: 'grid',
+      gap: '8px'
     }}>
-      {avatar && <div className="relative">
-        <div
-          className={`useritem--avatar ${loading ? "useritem--loading" : ""}`}
-          style={{
-            backgroundColor: loading ? "lightgray" : avatarUrl ? 'transparent' : backgroundColor || "#10b981",
-            backgroundImage:
-              !loading && avatarUrl && avatarUrl.length > 0 ? `url(${avatarUrl})` : "",
-            backgroundSize: "cover",
-            borderRadius: squared ? "" : "32px"
-          }}
-        >
-          {!loading && !avatarUrl && <span>{getInitials()}</span>}
-        </div>
-        {!loading && status && <div className={`useritem--item--status ${squared ? "useritem--item--status--squared" : ""} ${online ? "useritem--item--status--online" : ""}`} />}
-      </div>}
-      {loading && <div style={{ display: "grid", gap: "8px" }}>
-        <div className="useritem--loading" style={{ width: "120px", height: "16px", background: "lightgray" }} />
-        <div className="useritem--loading" style={{ width: "180px", height: "16px", background: "lightgray" }} />
-      </div>}
-      {!loading && infos && <div className={`useritem--infos truncate`}>
-        {title && (<div className={`useritem--infos--title`}>
-          <div className={`w-full ${reverse ? "text-right" : "text-left"}`} style={{ display: "flex", alignItems: "center", gap: "2px" }}>{title} {verified && <Verified />}</div>
-        </div>
-        )}
-        {description && <div className={`truncate useritem--infos--description  ${reverse ? "text-right" : "text-left"}`}>{description}</div>}
-      </div>}
-      {!loading && dropdown && <div>
-        {/* <img src={arrowDownSVG} alt="dropdown arrow down" style={{ rotate: open && dropdown ? '180deg' : '', transition: 'ease-in', transitionDuration: '100ms' }} /> */}
-      </div>}
+      <div className="useritem--loading--title" />
+      <div className="useritem--loading--description" />
     </div>
-    {/* {dropdown && !loading && children && (
-      <div
-        className={`useritem--dropdown ${open ? "useritem--dropdown--open" : "useritem--dropdown--closed"} ${border ? "useritem--border" : ""} ${squared ? "" : "useritem--item--border--rounded"}`}
-        style={{
-          borderRadius: squared ? "0px" : "0px",
-          borderTopRightRadius: squared ? "0px" : "0px",
-          borderTopLeftRadius: squared ? "0px" : "0px",
-        }}
-      >
-        {children}
-      </div>
-    )} */}
   </div>
-};
+
+  return <div className={`useritem ${disabled ? 'useritem--disabled' : ''}`} style={{
+    border: border ? '1px solid #e5e5e5' : '',
+    borderRadius: squared ? '' : '8px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: reverse ? 'row-reverse' : 'row',
+    boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
+    ...style
+  }} onClick={onClickItem}>
+    {avatar && <div className="useritem--avatar" style={{
+      backgroundColor: color,
+      backgroundImage: `url(${avatarUrl})`,
+      backgroundSize: "cover",
+      borderRadius: squared ? '' : '100px',
+    }}>
+      {getInitials()}
+    </div>}
+    <div style={{ flexDirection: reverse ? 'row-reverse' : 'row' }}>
+      {title && <div className="useritem--title" style={{
+        textAlign: reverse ? 'right' : 'left'
+      }}>{title}</div>}
+      {description && <div className="useritem--description" style={{
+        textAlign: reverse ? 'right' : 'left'
+      }}>{description}</div>}
+    </div>
+  </div>
+}
 
 export default UserItem;

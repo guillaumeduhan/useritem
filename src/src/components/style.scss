@@ -1,0 +1,92 @@
+/* core */
+
+$avatarSize: 50px;
+$neutral500: #a3a3a3;
+
+.useritem {
+  display: flex;
+  gap: 8px;
+  background-color: transparent;
+  font-size: 20px;
+  font-family: inherit, sans-serif;
+  color: black;
+  line-height: 1.2;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: fit-content;
+  background: transparent;
+  border: 0px;
+  padding: 12px 14px;
+
+  &--avatar {
+    background-color: $neutral500;
+    max-width: $avatarSize;
+    min-width: $avatarSize;
+    max-height: $avatarSize;
+    min-height: $avatarSize;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    outline: none;
+  }
+
+  &--title {
+    font-weight: 600;
+  }
+
+  &--description {
+    font-size: 18px;
+    color: $neutral500;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: none !important;
+    pointer-events: none !important;
+  }
+
+  &--loading {
+    animation: fade 2s infinite;
+    &--title,
+    &--description,
+    &--avatar {
+      width: 100%;
+      background-color: $neutral500;
+    }
+    &--avatar {
+      max-width: $avatarSize;
+      min-width: $avatarSize;
+      max-height: $avatarSize;
+      min-height: $avatarSize;
+    }
+    &--title {
+      width: 140px;
+    }
+    &--description {
+      width: 170px;
+    }
+    &--title,
+    &--description {
+      min-height: 18px;
+    }
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}

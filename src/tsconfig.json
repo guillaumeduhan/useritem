@@ -8,7 +8,7 @@
      "jsx": "react-jsx",
      "lib": ["dom"],
      "baseUrl": "./",
-     "strict": true,
+     "strict": false,
      "esModuleInterop": true,
      "skipLibCheck": true,
      "forceConsistentCasingInFileNames": true
