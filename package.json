@@ -1,7 +1,7 @@
 {
   "name": "useritem",
-  "version": "0.1.17",
-  "description": "A fully customizable component to display your users.",
+  "version": "0.1.18",
+  "description": "A fully customizable component to display users.",
   "main": "./build/index.js",
   "scripts": {
     "build": "webpack"

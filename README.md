@@ -1,8 +1,8 @@
 ## UserItem
 
-A simple, fully customizable component for displaying your users.
+A fully customizable component for displaying users.
 
-![useritem](https://www.useritem.dev/boom.png)
+![useritem](https://www.useritem.dev/ui.png)
 
 [Website](https://dub.sh/useritem)
 [Github](https://dub.sh/useritem-github) — feel free to give a star!
