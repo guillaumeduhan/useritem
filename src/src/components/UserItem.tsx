@@ -13,7 +13,7 @@ export type UserItemProps = {
   onlyAvatar?: boolean;
   reverse?: boolean;
   squared?: boolean;
-  social?: boolean;
+  status?: boolean;
   shadow?: boolean;
   style?: React.CSSProperties;
   title?: string;
@@ -32,7 +32,7 @@ const UserItem: React.FC<UserItemProps> = ({
   onlyAvatar,
   reverse,
   squared,
-  social,
+  status,
   shadow,
   style,
   title
@@ -94,7 +94,7 @@ const UserItem: React.FC<UserItemProps> = ({
       }}>
         {getInitials()}
       </div>
-      {social && <div style={{
+      {status && <div style={{
         width: 12,
         height: 12,
         backgroundColor: online ? 'limegreen' : '#ccc',
