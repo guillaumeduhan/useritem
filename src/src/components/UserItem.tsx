@@ -95,10 +95,10 @@ const UserItem: React.FC<UserItemProps> = ({
         {getInitials()}
       </div>
       {status && <div style={{
-        width: 12,
-        height: 12,
+        width: 16,
+        height: 16,
         backgroundColor: online ? 'limegreen' : '#ccc',
-        borderRadius: 12,
+        borderRadius: 16,
         border: '2px solid white',
         position: 'absolute',
         bottom: 0,
