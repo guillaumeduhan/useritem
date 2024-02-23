@@ -9,8 +9,11 @@ export type UserItemProps = {
   disabled?: boolean;
   onClick?: (event: MouseEvent) => void;
   loading?: boolean;
+  online?: boolean;
+  onlyAvatar?: boolean;
   reverse?: boolean;
   squared?: boolean;
+  social?: boolean;
   shadow?: boolean;
   style?: React.CSSProperties;
   title?: string;
@@ -25,8 +28,11 @@ const UserItem: React.FC<UserItemProps> = ({
   disabled,
   loading,
   onClick,
+  online,
+  onlyAvatar,
   reverse,
   squared,
+  social,
   shadow,
   style,
   title
@@ -50,7 +56,7 @@ const UserItem: React.FC<UserItemProps> = ({
   };
 
   if (loading) return <div className="useritem useritem--loading" style={{
-    border: border ? '1px solid #e5e5e5' : '',
+    border: border ? '1px solid #ccc' : '',
     borderRadius: squared ? '' : '8px',
     display: 'flex',
     alignItems: 'center',
@@ -71,7 +77,7 @@ const UserItem: React.FC<UserItemProps> = ({
   </div>
 
   return <div className={`useritem ${disabled ? 'useritem--disabled' : ''}`} style={{
-    border: border ? '1px solid #e5e5e5' : '',
+    border: border ? '1px solid #ccc' : '',
     borderRadius: squared ? '' : '8px',
     display: 'flex',
     alignItems: 'center',
@@ -79,22 +85,34 @@ const UserItem: React.FC<UserItemProps> = ({
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
     ...style
   }} onClick={onClickItem}>
-    {avatar && <div className="useritem--avatar" style={{
-      backgroundColor: color,
-      backgroundImage: `url(${avatarUrl})`,
-      backgroundSize: "cover",
-      borderRadius: squared ? '' : '100px',
-    }}>
-      {getInitials()}
+    {avatar && <div style={{ position: 'relative' }}>
+      <div className="useritem--avatar" style={{
+        backgroundColor: color || '#ccc',
+        backgroundImage: `url(${avatarUrl})`,
+        backgroundSize: "cover",
+        borderRadius: squared ? '' : '100px',
+      }}>
+        {getInitials()}
+      </div>
+      {social && <div style={{
+        width: 12,
+        height: 12,
+        backgroundColor: online ? 'limegreen' : '#ccc',
+        borderRadius: 12,
+        border: '2px solid white',
+        position: 'absolute',
+        bottom: 0,
+        right: 0
+      }} />}
     </div>}
-    <div style={{ flexDirection: reverse ? 'row-reverse' : 'row' }}>
+    {!onlyAvatar && <div style={{ flexDirection: reverse ? 'row-reverse' : 'row' }}>
       {title && <div className="useritem--title" style={{
         textAlign: reverse ? 'right' : 'left'
       }}>{title}</div>}
       {description && <div className="useritem--description" style={{
         textAlign: reverse ? 'right' : 'left'
       }}>{description}</div>}
-    </div>
+    </div>}
   </div>
 }
 
