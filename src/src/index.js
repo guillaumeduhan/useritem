@@ -4,5 +4,5 @@ import UserItem from './components/UserItem';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<React.StrictMode>
-  <UserItem title="Guillaume Duhan" description="Youtuber @codewithguillaume" />
+  <UserItem title="Guillaume Duhane" description="Youtuber @codewithguillaume" maxWidth={350} />
 </React.StrictMode>);

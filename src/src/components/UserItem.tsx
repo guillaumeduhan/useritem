@@ -10,6 +10,7 @@ export type UserItemProps = {
   onClick?: (event: MouseEvent) => void;
   loading?: boolean;
   limit?: number;
+  maxWidth?: number;
   online?: boolean;
   onlyAvatar?: boolean;
   reverse?: boolean;
@@ -28,7 +29,8 @@ const UserItem: React.FC<UserItemProps> = ({
   description,
   disabled,
   loading,
-  limit = 22,
+  limit,
+  maxWidth = 275,
   onClick,
   online,
   onlyAvatar,
@@ -58,6 +60,7 @@ const UserItem: React.FC<UserItemProps> = ({
   };
 
   const limitString = (str: string) => {
+    if (!limit) return str;
     if (!str) return;
     if (str.length <= limit) return str;
     return str.slice(0, limit) + '...'
@@ -91,11 +94,8 @@ const UserItem: React.FC<UserItemProps> = ({
     alignItems: 'center',
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
-    maxWidth: '100%',
-    width: '275px',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    maxWidth: `${maxWidth}px`,
+    width: '100%',
     ...style
   }} onClick={onClickItem}>
     {avatar && <div style={{ position: 'relative' }}>
@@ -119,13 +119,22 @@ const UserItem: React.FC<UserItemProps> = ({
       }} />}
     </div>}
     {!onlyAvatar && <div style={{
-      flexDirection: reverse ? 'row-reverse' : 'row'
+      flexDirection: reverse ? 'row-reverse' : 'row',
+      width: '100%'
     }}>
       {title && <div className="useritem--title" style={{
         textAlign: reverse ? 'right' : 'left',
+        width: 'calc(100% - 50px)',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
       }}>{limitString(title)}</div>}
       {description && <div className="useritem--description" style={{
         textAlign: reverse ? 'right' : 'left',
+        width: 'calc(100% - 50px)',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
       }}>{limitString(description)}</div>}
     </div>
     }
