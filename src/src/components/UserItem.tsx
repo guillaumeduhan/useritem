@@ -9,6 +9,7 @@ export type UserItemProps = {
   disabled?: boolean;
   onClick?: (event: MouseEvent) => void;
   loading?: boolean;
+  limit?: number;
   online?: boolean;
   onlyAvatar?: boolean;
   reverse?: boolean;
@@ -27,6 +28,7 @@ const UserItem: React.FC<UserItemProps> = ({
   description,
   disabled,
   loading,
+  limit = 22,
   onClick,
   online,
   onlyAvatar,
@@ -54,6 +56,12 @@ const UserItem: React.FC<UserItemProps> = ({
     });
     return initials.join("");
   };
+
+  const limitString = (str: string) => {
+    if (!str) return;
+    if (str.length <= limit) return str;
+    return str.slice(0, limit) + '...'
+  }
 
   if (loading) return <div className="useritem useritem--loading" style={{
     border: border ? '1px solid #ccc' : '',
@@ -83,6 +91,11 @@ const UserItem: React.FC<UserItemProps> = ({
     alignItems: 'center',
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
+    maxWidth: '100%',
+    width: '275px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
     ...style
   }} onClick={onClickItem}>
     {avatar && <div style={{ position: 'relative' }}>
@@ -105,15 +118,18 @@ const UserItem: React.FC<UserItemProps> = ({
         right: 0
       }} />}
     </div>}
-    {!onlyAvatar && <div style={{ flexDirection: reverse ? 'row-reverse' : 'row' }}>
+    {!onlyAvatar && <div style={{
+      flexDirection: reverse ? 'row-reverse' : 'row'
+    }}>
       {title && <div className="useritem--title" style={{
-        textAlign: reverse ? 'right' : 'left'
-      }}>{title}</div>}
+        textAlign: reverse ? 'right' : 'left',
+      }}>{limitString(title)}</div>}
       {description && <div className="useritem--description" style={{
-        textAlign: reverse ? 'right' : 'left'
-      }}>{description}</div>}
-    </div>}
-  </div>
+        textAlign: reverse ? 'right' : 'left',
+      }}>{limitString(description)}</div>}
+    </div>
+    }
+  </div >
 }
 
 export default UserItem;
