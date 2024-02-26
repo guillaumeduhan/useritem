@@ -9,8 +9,7 @@ export type UserItemProps = {
   disabled?: boolean;
   onClick?: (event: MouseEvent) => void;
   loading?: boolean;
-  limit?: number;
-  maxWidth?: number;
+  width?: number;
   online?: boolean;
   onlyAvatar?: boolean;
   reverse?: boolean;
@@ -29,8 +28,7 @@ const UserItem: React.FC<UserItemProps> = ({
   description,
   disabled,
   loading,
-  limit,
-  maxWidth = 275,
+  width = 275,
   onClick,
   online,
   onlyAvatar,
@@ -59,18 +57,11 @@ const UserItem: React.FC<UserItemProps> = ({
     return initials.join("");
   };
 
-  const limitString = (str: string) => {
-    if (!limit) return str;
-    if (!str) return;
-    if (str.length <= limit) return str;
-    return str.slice(0, limit) + '...'
-  }
-
   if (loading) return <div className="useritem useritem--loading" style={{
-    border: border ? '1px solid #ccc' : '',
-    borderRadius: squared ? '' : '8px',
     display: 'flex',
     alignItems: 'center',
+    border: border ? '1px solid #ccc' : '',
+    borderRadius: squared ? '' : '8px',
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
     ...style
@@ -88,14 +79,14 @@ const UserItem: React.FC<UserItemProps> = ({
   </div>
 
   return <div className={`useritem ${disabled ? 'useritem--disabled' : ''}`} style={{
-    border: border ? '1px solid #ccc' : '',
-    borderRadius: squared ? '' : '8px',
     display: 'flex',
     alignItems: 'center',
+    border: border ? '1px solid #ccc' : '',
+    borderRadius: squared ? '' : '8px',
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
-    maxWidth: `${maxWidth}px`,
-    width: '100%',
+    width: `${width}px`,
+    maxWidth: '100%',
     ...style
   }} onClick={onClickItem}>
     {avatar && <div style={{ position: 'relative' }}>
@@ -108,34 +99,23 @@ const UserItem: React.FC<UserItemProps> = ({
         {getInitials()}
       </div>
       {status && <div style={{
-        width: 16,
-        height: 16,
+        width: 14,
+        height: 14,
         backgroundColor: online ? 'limegreen' : '#ccc',
-        borderRadius: 16,
+        borderRadius: 14,
         border: '2px solid white',
         position: 'absolute',
-        bottom: 0,
-        right: 0
+        bottom: squared ? '-6px' : 0,
+        right: squared ? '-6px' : 0
       }} />}
     </div>}
     {!onlyAvatar && <div style={{
+      textAlign: reverse ? 'right' : 'left',
       flexDirection: reverse ? 'row-reverse' : 'row',
-      width: '100%'
+      width: 'calc(80%)'
     }}>
-      {title && <div className="useritem--title" style={{
-        textAlign: reverse ? 'right' : 'left',
-        width: 'calc(100% - 50px)',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-      }}>{limitString(title)}</div>}
-      {description && <div className="useritem--description" style={{
-        textAlign: reverse ? 'right' : 'left',
-        width: 'calc(100% - 50px)',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-      }}>{limitString(description)}</div>}
+      {title && <div className="useritem--title truncate">{title}</div>}
+      {description && <div className="useritem--description truncate">{description}</div>}
     </div>
     }
   </div >

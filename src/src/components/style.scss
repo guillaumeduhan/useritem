@@ -3,8 +3,13 @@
 $avatarSize: 50px;
 $neutral500: #a3a3a3;
 
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .useritem {
-  display: flex;
   gap: 8px;
   background-color: transparent;
   font-size: 20px;
