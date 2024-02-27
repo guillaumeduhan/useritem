@@ -1,11 +1,10 @@
-# UserItem
-
-A fully customizable component for displaying users.
+# useritem
 
 ![useritem](https://www.useritem.dev/ui.png)
 
-[Website](https://dub.sh/useritem)
-[Github](https://dub.sh/useritem-github) — feel free to give a star!
+[Website](https://dub.sh/useritem) | [Github](https://dub.sh/useritem-github) — feel free to give a star!
+
+> Attention! I'm currently working on a version for Vue, Svelte, and Astro. It's coming soon.
 
 ## Get Started
 

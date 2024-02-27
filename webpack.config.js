@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./src/src/components/useritem",
+  entry: "./React/src/components/useritem",
   plugins: [new MiniCssExtractPlugin()],
   output: {
     path: path.resolve("build"),
