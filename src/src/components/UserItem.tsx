@@ -1,31 +1,32 @@
 "use client";
 import "./style.scss";
 
-export type UserItemProps = {
-  avatar?: boolean,
-  avatarUrl?: string,
-  border?: boolean,
-  color?: string;
-  children?: React.ReactNode,
-  description?: string;
-  disabled?: boolean;
-  onClick?: (event: MouseEvent) => void;
-  loading?: boolean;
-  width?: number;
-  online?: boolean;
-  onlyAvatar?: boolean;
-  reverse?: boolean;
-  squared?: boolean;
-  status?: boolean;
-  shadow?: boolean;
-  style?: React.CSSProperties;
-  title?: string;
-};
+// export type UserItemProps = {
+//   avatar?: boolean,
+//   avatarUrl?: string,
+//   border?: boolean,
+//   color?: string;
+//   children?: React.ReactNode,
+//   description?: string;
+//   disabled?: boolean;
+//   onClick?: (event: MouseEvent) => void;
+//   loading?: boolean;
+//   width?: number;
+//   online?: boolean;
+//   onlyAvatar?: boolean;
+//   reverse?: boolean;
+//   squared?: boolean;
+//   status?: boolean;
+//   shadow?: boolean;
+//   style?: React.CSSProperties;
+//   title?: string;
+// };
 
 export default function UserItem({
   avatar = true,
   avatarUrl,
   border = true,
+  children,
   color,
   description,
   disabled,
@@ -40,7 +41,7 @@ export default function UserItem({
   shadow,
   style,
   title
-}: UserItemProps) {
+}: any) {
   const onClickItem = (e: any) => {
     if (loading) return;
     if (onClick) return onClick(e);
