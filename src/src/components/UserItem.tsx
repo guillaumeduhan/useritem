@@ -89,6 +89,7 @@ export default function UserItem({
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
     width: `${width}px`,
+    minHeight: '76px',
     maxWidth: '100%',
     ...style
   }} onClick={onClickItem}>
