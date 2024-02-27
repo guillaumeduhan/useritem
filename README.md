@@ -1,4 +1,4 @@
-## UserItem
+# UserItem
 
 A fully customizable component for displaying users.
 
