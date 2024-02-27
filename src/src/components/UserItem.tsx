@@ -20,7 +20,7 @@ export type UserItemProps = {
   title?: string;
 };
 
-const UserItem: React.FC<UserItemProps> = ({
+const UserItem = ({
   avatar = true,
   avatarUrl,
   border = true,
