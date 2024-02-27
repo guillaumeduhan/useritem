@@ -1,3 +1,4 @@
+"use client";
 import "./style.scss";
 
 export type UserItemProps = {
