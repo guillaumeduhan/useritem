@@ -102,10 +102,10 @@ export default function UserItem({
         {getInitials()}
       </div>
       {status && <div style={{
-        width: 14,
-        height: 14,
+        width: 15,
+        height: 15,
         backgroundColor: online ? 'limegreen' : '#ccc',
-        borderRadius: 14,
+        borderRadius: 15,
         border: '2px solid white',
         position: 'absolute',
         bottom: squared ? '-6px' : 0,
