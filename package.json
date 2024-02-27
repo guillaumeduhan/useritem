@@ -1,6 +1,6 @@
 {
   "name": "useritem",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "A fully customizable component to display users.",
   "main": "./build/index.js",
   "scripts": {

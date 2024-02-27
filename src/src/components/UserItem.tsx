@@ -5,6 +5,7 @@ export type UserItemProps = {
   avatarUrl?: string,
   border?: boolean,
   color?: string;
+  children?: React.ReactNode,
   description?: string;
   disabled?: boolean;
   onClick?: (event: MouseEvent) => void;
@@ -20,7 +21,7 @@ export type UserItemProps = {
   title?: string;
 };
 
-const UserItem = ({
+export default function UserItem({
   avatar = true,
   avatarUrl,
   border = true,
@@ -38,7 +39,7 @@ const UserItem = ({
   shadow,
   style,
   title
-}: UserItemProps) => {
+}: UserItemProps) {
   const onClickItem = (e: any) => {
     if (loading) return;
     if (onClick) return onClick(e);
@@ -120,5 +121,3 @@ const UserItem = ({
     }
   </div >
 }
-
-export default UserItem;
