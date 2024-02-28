@@ -39,6 +39,7 @@ export default function UserItem({
   squared,
   status,
   shadow,
+  small,
   style,
   title
 }: any) {
@@ -89,12 +90,15 @@ export default function UserItem({
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
     width: `${width}px`,
-    minHeight: '76px',
     maxWidth: '100%',
     ...style
   }} onClick={onClickItem}>
     {avatar && <div style={{ position: 'relative' }}>
       <div className="useritem--avatar" style={{
+        maxWidth: small ? 36 : 48,
+        minWidth: small ? 36 : 48,
+        maxHeight: small ? 36 : 48,
+        minHeight: small ? 36 : 48,
         backgroundColor: color || '#ccc',
         backgroundImage: `url(${avatarUrl})`,
         backgroundSize: "cover",
@@ -103,10 +107,10 @@ export default function UserItem({
         {getInitials()}
       </div>
       {status && <div style={{
-        width: 15,
-        height: 15,
+        width: 14,
+        height: 14,
         backgroundColor: online ? 'limegreen' : '#ccc',
-        borderRadius: 15,
+        borderRadius: 14,
         border: '2px solid white',
         position: 'absolute',
         bottom: squared ? '-6px' : 0,
@@ -118,8 +122,12 @@ export default function UserItem({
       flexDirection: reverse ? 'row-reverse' : 'row',
       width: 'calc(80%)'
     }}>
-      {title && <div className="useritem--title truncate">{title}</div>}
-      {description && <div className="useritem--description truncate">{description}</div>}
+      {title && <div className="useritem--title truncate" style={{
+        fontSize: small ? 15 : 18
+      }}>{title}</div>}
+      {description && <div className="useritem--description truncate" style={{
+        fontSize: small ? 15 : 18
+      }}>{description}</div>}
     </div>
     }
   </div >

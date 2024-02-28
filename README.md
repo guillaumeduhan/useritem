@@ -46,9 +46,9 @@ const UserItem = dynamic(() => import("useritem"), { ssr: false });
 | `onClick`    | `(event: MouseEvent) => void`         | Function to handle click events on the user item.                                                      |                          |
 | `loading`    | `boolean`                             | Determines whether a loading state should be displayed.                                                 | `false`                  |
 | `limit`      | `number`                              | Determines the string limit on title & description.                                                     |                          |
-| `width`   | `number`                              | Width of the component.                                                                       | 275                         |
+| `width`      | `number`                              | Width of the component.                                                                       | 275px                         |
 | `online`     | `boolean`                             | Determines whether the user is online.                                                                 |  `false`                         |
-| `onlyAvatar` | `boolean`                             | Determines whether only the avatar should be displayed without other information.                      |   `false`                        |
+| `small`      | `boolean`                             | Display a smaller version.                      |   `false`                        |
 | `reverse`    | `boolean`                             | Determines whether the layout should be reversed. Default value is `false`.                             | `false`                  |
 | `squared`    | `boolean`                             | Determines whether the corners should be squared. Default value is `false`.                             | `false`                  |
 | `status`     | `boolean`                             | Determines whether the user is a status user.                                                           |  `false`                         |

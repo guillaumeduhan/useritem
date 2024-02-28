@@ -1,6 +1,6 @@
 /* core */
 
-$avatarSize: 50px;
+$avatarSize: 52px;
 $neutral500: #a3a3a3;
 
 .truncate {
@@ -12,7 +12,7 @@ $neutral500: #a3a3a3;
 .useritem {
   gap: 8px;
   background-color: transparent;
-  font-size: 20px;
+  font-size: 18px;
   font-family: inherit, sans-serif;
   color: black;
   line-height: 1.2;
@@ -29,10 +29,6 @@ $neutral500: #a3a3a3;
   padding: 12px 14px;
 
   &--avatar {
-    max-width: $avatarSize;
-    min-width: $avatarSize;
-    max-height: $avatarSize;
-    min-height: $avatarSize;
     overflow: hidden;
     color: white;
     display: flex;
