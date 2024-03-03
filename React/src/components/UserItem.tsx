@@ -1,26 +1,28 @@
 "use client";
+import Verified from '../components/Icons/Verified';
 import "./style.scss";
 
-// export type UserItemProps = {
-//   avatar?: boolean,
-//   avatarUrl?: string,
-//   border?: boolean,
-//   color?: string;
-//   children?: React.ReactNode,
-//   description?: string;
-//   disabled?: boolean;
-//   onClick?: (event: MouseEvent) => void;
-//   loading?: boolean;
-//   width?: number;
-//   online?: boolean;
-//   onlyAvatar?: boolean;
-//   reverse?: boolean;
-//   squared?: boolean;
-//   status?: boolean;
-//   shadow?: boolean;
-//   style?: React.CSSProperties;
-//   title?: string;
-// };
+export type UserItemProps = {
+  avatar?: boolean,
+  avatarUrl?: string,
+  border?: boolean,
+  color?: string;
+  children?: React.ReactNode,
+  description?: string;
+  disabled?: boolean;
+  onClick?: (event: MouseEvent) => void;
+  loading?: boolean;
+  width?: number;
+  online?: boolean;
+  onlyAvatar?: boolean;
+  reverse?: boolean;
+  squared?: boolean;
+  status?: boolean;
+  shadow?: boolean;
+  style?: React.CSSProperties;
+  title?: string;
+  verified?: boolean;
+};
 
 export default function UserItem({
   avatar = true,
@@ -41,7 +43,8 @@ export default function UserItem({
   shadow,
   small,
   style,
-  title
+  title,
+  verified
 }: any) {
   const onClickItem = (e: any) => {
     if (loading) return;
@@ -124,7 +127,16 @@ export default function UserItem({
       flexDirection: reverse ? 'row-reverse' : 'row',
       width: 'calc(80%)'
     }}>
-      {title && <div className="useritem--title truncate">{title}</div>}
+      {title && <div style={{
+        display: 'flex',
+        gap: '4px',
+        alignItems: 'center'
+      }}>
+        <div className="useritem--title truncate" style={{
+          fontWeight: 700
+        }}>{title}</div>
+        {verified && <Verified />}
+      </div>}
       {description && <div className="useritem--description truncate">{description}</div>}
     </div>
     }
