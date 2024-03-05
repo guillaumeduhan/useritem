@@ -130,7 +130,8 @@ export default function UserItem({
       {title && <div style={{
         display: 'flex',
         gap: '4px',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: reverse ? 'end' : 'start'
       }}>
         <div className="useritem--title truncate" style={{
           fontWeight: 700
