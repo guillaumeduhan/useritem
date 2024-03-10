@@ -88,12 +88,13 @@ export default function UserItem({
   return <div className={`useritem ${disabled ? 'useritem--disabled' : ''}`} style={{
     display: 'flex',
     alignItems: 'center',
-    border: border ? '1px solid #ccc' : '',
+    padding: onlyAvatar ? '' : '12px 14px',
+    border: border && !onlyAvatar ? '1px solid #ccc' : '',
     borderRadius: squared ? '' : '8px',
     fontSize: small ? '14px' : '16px',
     flexDirection: reverse ? 'row-reverse' : 'row',
     boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,0.05)' : '',
-    width: `${width}px`,
+    width: `${onlyAvatar ? 'fit-content' : width + 'px'}`,
     maxWidth: '100%',
     ...style
   }} onClick={onClickItem}>
