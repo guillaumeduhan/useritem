@@ -1,11 +1,14 @@
 {
   "name": "useritem",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "description": "A fully customizable component to display users.",
   "main": "./build/index.js",
   "scripts": {
     "build": "webpack"
   },
+  "files": [
+    "build"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
