@@ -1,3 +1,0 @@
-# UserItem
-
-Root for CRA.
