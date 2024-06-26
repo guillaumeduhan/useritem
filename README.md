@@ -4,26 +4,20 @@
 
 [Website](https://dub.sh/useritem) | [Github](https://dub.sh/useritem-github) — feel free to give a star!
 
-> Attention! I'm currently working on a version for Vue, Svelte, and Astro. It's coming soon.
-
 ## Get Started
 
 To use the UserItem component in your React/Next.js application, you can install it via npm or yarn:
 
 ```bash
-npm install useritem
-yarn add useritem
+npm i useritem@latest
+yarn add useritem@latest
 ```
 
 ## React & Next.js
 
 ```bash
 ...
-// React
 import UserItem from 'useritem';
-
-// Next.js, only on client for now
-const UserItem = dynamic(() => import("useritem"), { ssr: false });
 
 <UserItem
   title="John Doe"
