@@ -1,0 +1,29 @@
+.DS_Store
+node_modules
+javascript.iml
+*.js-e
+*.json-e
+upload/*
+coverage/
+.idea
+*.iml
+
+.babelrc
+
+# No rollup cache
+.rts2_cache*
+
+# No source or test needed
+src
+test
+
+# No build specifics needed
+.pubnub.yml
+.travis.yml
+
+.eslintrc.cjs
+Makefile
+index.html
+package.json
+vite.config.js
+vitest.config.js
