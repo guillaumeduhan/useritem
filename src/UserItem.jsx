@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 
 const AVATAR_SIZE = 42;
@@ -10,7 +11,6 @@ export default function UserItem({
   border = true,
   description = 'Youtuber',
   disabled = false,
-  loading = false,
   width = 275,
   onClick,
   online = false,
@@ -29,6 +29,7 @@ export default function UserItem({
   };
 
   const getInitials = () => {
+    if (avatarUrl) return;
     if (!name) return "AA";
     return name.split(" ").map(word => word[0]?.toUpperCase()).join("");
   };
