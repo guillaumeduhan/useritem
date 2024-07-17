@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve("src", 'UserItem.jsx'),
+      entry: path.resolve("src", 'UserItem.tsx'),
       name: 'useritem',
       fileName: (format) => `useritem.${format}.js`
     },
