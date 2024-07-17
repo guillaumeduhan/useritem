@@ -2988,7 +2988,7 @@ useritem@0.2.0:
     react-dom "^18.2.0"
     useritem "0.2.0"
 
-useritem@0.2.5:
+useritem@latest:
   version "0.2.5"
   resolved "https://registry.npmjs.org/useritem/-/useritem-0.2.5.tgz"
   integrity sha512-eDx7Trj3dN2oyW1PpBvYQ0E2K1T5BsZmixGKmNx/IiIqz74IDiPS+4y4RfpEkcropWKTHR3DpeyMvVb+8CWeIg==
