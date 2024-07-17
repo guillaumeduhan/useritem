@@ -126,7 +126,7 @@ export default function UserItem({
         }}>
           <div style={{
             color: 'black',
-            fontWeight: 800,
+            fontWeight: 600,
             fontSize: '1em',
             whiteSpace: 'nowrap',
             overflow: 'hidden',

@@ -27,3 +27,33 @@ index.html
 package.json
 vite.config.js
 vitest.config.js
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+*.local
+.UserItem-archived.jsx
+index.html
+jsr.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+vitest.config.ts
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
