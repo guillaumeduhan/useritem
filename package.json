@@ -1,6 +1,6 @@
 {
   "name": "useritem",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "A fully customizable component to display users.",
   "main": "./dist/useritem.umd.js",
   "module": "./dist/useritem.es.js",
@@ -12,7 +12,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000",
+    "dev": "vite --port 3200",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
