@@ -37,7 +37,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
 *.local
 .UserItem-archived.jsx
 index.html
