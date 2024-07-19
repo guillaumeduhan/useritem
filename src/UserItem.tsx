@@ -127,7 +127,7 @@ export default function UserItem({
           <div style={{
             color: 'black',
             fontWeight: 600,
-            fontSize: '1em',
+            fontSize: '15px',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis'
@@ -137,7 +137,7 @@ export default function UserItem({
         {description && <div style={{
           color: '#AAA',
           fontWeight: 500,
-          fontSize: '0.9em',
+          fontSize: '14px',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           textOverflow: 'ellipsis'
