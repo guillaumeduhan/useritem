@@ -47,7 +47,7 @@ export default function UserItem({
 }: UserItemProps) {
   const onClickItem = (e: MouseEvent<HTMLDivElement>) => {
     if (onClick) onClick(e);
-    alert("Hello there!")
+    else alert("Hello there!")
   };
 
   const getInitials = () => {
