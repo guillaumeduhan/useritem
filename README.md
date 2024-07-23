@@ -2,7 +2,7 @@
 
 ![useritem](https://www.useritem.dev/ui.png)
 
-[Website](https://dub.sh/useritem) | [Github](https://dub.sh/useritem-github) — feel free to give a star!
+Star on Github 👉 [Github](https://dub.sh/useritem-github)
 
 ## Get Started
 
@@ -20,7 +20,7 @@ yarn add useritem@latest
 import UserItem from 'useritem';
 
 <UserItem
-  title="John Doe"
+  name="John Doe"
   description="johndoe@mail.com"
   avatarUrl="https://example.com/avatar.jpg"
   onClick={(e) => console.log("User item clicked!", e)}
@@ -48,7 +48,7 @@ import UserItem from 'useritem';
 | `status`     | `boolean`                             | Determines whether the user is a status user.                                                           |  `false`                         |
 | `shadow`     | `boolean`                             | Determines whether a shadow effect should be added.                                                     | `false`                  |
 | `style`      | `React.CSSProperties` or `undefined`  | Custom CSS styles for the component.                                                                   |                          |
-| `title`      | `string`                              | User's name or title. Default value is `"John Doe"`.                                                    | `"John Doe"`             |
+| `name`      | `string`                              | User's name or title. Default value is `"John Doe"`.                                                    | `"John Doe"`             |
 
 
 ## License
