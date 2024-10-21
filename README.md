@@ -1,9 +1,5 @@
 # useritem
 
-![useritem](https://www.useritem.dev/ui.png)
-
-Star on Github 👉 [Github](https://dub.sh/useritem-github)
-
 ## Get Started
 
 To use the UserItem component in your React/Next.js application, you can install it via npm or yarn:
@@ -51,3 +47,6 @@ import UserItem from 'useritem';
 ## License
 
 This component is licensed under the MIT License. Feel free to use and modify it as needed for your projects.
+
+
+Star on Github 👉 [Github](https://dub.sh/useritem-github)
