@@ -8,22 +8,23 @@ const WIDTH = 250;
 
 interface UserItemProps {
   avatar?: boolean;
-  avatarUrl?: string;
   avatarBackgroundColor?: string;
+  avatarUrl?: string;
   border?: boolean;
+  dark?: boolean;
   description?: string;
   disabled?: boolean;
-  width?: number;
+  name?: string;
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
   online?: boolean;
   reverse?: boolean;
+  shadow?: boolean;
   squared?: boolean;
   status?: boolean;
-  shadow?: boolean;
   style?: CSSProperties;
-  name?: string;
   verified?: boolean;
   verifiedColor?: string;
+  width?: number;
 }
 
 export default function UserItem({
@@ -31,6 +32,7 @@ export default function UserItem({
   avatarUrl,
   avatarBackgroundColor = '#03b66e',
   border = true,
+  dark = false,
   description = 'Youtuber',
   disabled = false,
   onClick,
@@ -57,88 +59,88 @@ export default function UserItem({
 
   return (
     <div style={{
-      padding: '8px 10px',
-      display: 'flex',
       alignItems: 'center',
       border: '1px solid #ccc',
       borderRadius: squared ? '' : '8px',
-      flexDirection: reverse ? 'row-reverse' : 'row',
       boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,.05)' : '',
-      width: `${WIDTH}px`,
-      maxWidth: '100%',
-      gap: '8px',
-      fontFamily: 'inherit, sans-serif',
       color: 'black',
-      lineHeight: '1.2',
-      outline: 'none',
       cursor: disabled ? 'none' : 'pointer',
-      position: 'relative',
-      pointerEvents: disabled ? 'none' : 'all',
-      userSelect: 'none',
+      display: 'flex',
+      flexDirection: reverse ? 'row-reverse' : 'row',
+      fontFamily: 'inherit, sans-serif',
+      gap: '8px',
+      lineHeight: '1.2',
+      maxWidth: '100%',
       opacity: disabled ? 0.5 : 1,
+      outline: 'none',
+      padding: '8px 10px',
+      pointerEvents: disabled ? 'none' : 'all',
+      position: 'relative',
+      userSelect: 'none',
+      width: `${WIDTH}px`,
       ...style,
     }} onClick={onClickItem}>
       {avatar && <div style={{ position: 'relative' }}>
         <div style={{
-          overflow: 'hidden',
-          color: 'white',
-          display: 'flex',
           alignItems: 'center',
           backgroundColor: avatarBackgroundColor,
-          justifyContent: 'center',
-          fontWeight: 800,
-          fontSize: FONT_SIZE,
-          outline: 'none',
-          maxWidth: AVATAR_SIZE,
-          minWidth: AVATAR_SIZE,
-          maxHeight: AVATAR_SIZE,
-          minHeight: AVATAR_SIZE,
           backgroundImage: `url(${avatarUrl})`,
           backgroundSize: "cover",
-          borderRadius: squared ? '' : '100px'
+          borderRadius: squared ? '' : '100px',
+          color: 'white',
+          display: 'flex',
+          fontSize: FONT_SIZE,
+          fontWeight: 800,
+          justifyContent: 'center',
+          maxHeight: AVATAR_SIZE,
+          maxWidth: AVATAR_SIZE,
+          minHeight: AVATAR_SIZE,
+          minWidth: AVATAR_SIZE,
+          outline: 'none',
+          overflow: 'hidden',
         }}>
           {getInitials()}
         </div>
         {status && <div style={{
-          width: STATUS_SIZE,
-          height: STATUS_SIZE,
           backgroundColor: online ? 'limegreen' : '#ccc',
-          borderRadius: STATUS_SIZE,
           border: '2px solid white',
-          position: 'absolute',
+          borderRadius: STATUS_SIZE,
           bottom: squared ? '-6px' : 0,
-          right: squared ? '-6px' : 0
+          height: STATUS_SIZE,
+          position: 'absolute',
+          right: squared ? '-6px' : 0,
+          width: STATUS_SIZE,
         }} />}
       </div>}
       <div style={{
-        textAlign: reverse ? 'right' : 'left',
         flexDirection: reverse ? 'row-reverse' : 'row',
+        textAlign: reverse ? 'right' : 'left',
         width: 'calc(80%)'
       }}>
         {name && <div style={{
-          display: 'flex',
-          lineHeight: 1.42,
-          gap: '4px',
           alignItems: 'center',
-          justifyContent: reverse ? 'end' : 'start'
+          display: 'flex',
+          gap: '4px',
+          justifyContent: reverse ? 'end' : 'start',
+          lineHeight: 1.42,
         }}>
           <div style={{
             color: 'black',
-            fontWeight: 600,
             fontSize: FONT_SIZE,
-            whiteSpace: 'nowrap',
+            fontWeight: 600,
             overflow: 'hidden',
-            textOverflow: 'ellipsis'
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
           }}>{name}</div>
           {verified && <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24"><path fill={verifiedColor} d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12z"></path></svg>}
         </div>}
         {description && <div style={{
           color: '#AAA',
-          fontWeight: 500,
           fontSize: FONT_SIZE,
-          whiteSpace: 'nowrap',
+          fontWeight: 500,
           overflow: 'hidden',
-          textOverflow: 'ellipsis'
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
         }}>{description}</div>}
       </div>
     </div>
