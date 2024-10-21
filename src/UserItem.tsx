@@ -1,20 +1,21 @@
 "use client";
 import { CSSProperties, MouseEvent } from 'react';
 
-const AVATAR_SIZE = 42;
-const STATUS_SIZE = 16;
+const AVATAR_SIZE = 36;
+const FONT_SIZE = 14;
+const STATUS_SIZE = 13;
+const WIDTH = 250;
 
 interface UserItemProps {
   avatar?: boolean;
   avatarUrl?: string;
-  backgroundColor?: string;
+  avatarBackgroundColor?: string;
   border?: boolean;
   description?: string;
   disabled?: boolean;
   width?: number;
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
   online?: boolean;
-  onlyAvatar?: boolean;
   reverse?: boolean;
   squared?: boolean;
   status?: boolean;
@@ -28,19 +29,37 @@ interface UserItemProps {
 export default function UserItem({
   avatar = true,
   avatarUrl,
-  backgroundColor = '#03b66e',
+  avatarBackgroundColor = '#03b66e',
   border = true,
   description = 'Youtuber',
   disabled = false,
-  width = 275,
   onClick,
   online = false,
-  onlyAvatar = false,
   reverse = false,
   squared = false,
   status = true,
   shadow = false,
-  style = {},
+  style = {
+    padding: '8px 10px',
+    display: 'flex',
+    alignItems: 'center',
+    border: '1px solid #ccc',
+    borderRadius: squared ? '' : '8px',
+    flexDirection: reverse ? 'row-reverse' : 'row',
+    boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,.05)' : '',
+    width: `${WIDTH}px`,
+    maxWidth: '100%',
+    gap: '8px',
+    fontFamily: 'inherit, sans-serif',
+    color: 'black',
+    lineHeight: '1.2',
+    outline: 'none',
+    cursor: disabled ? 'none' : 'pointer',
+    position: 'relative',
+    pointerEvents: disabled ? 'none' : 'all',
+    userSelect: 'none',
+    opacity: disabled ? 0.5 : 1,
+  },
   name = 'Guillaume Duhan',
   verified = true,
   verifiedColor = 'black'
@@ -58,26 +77,6 @@ export default function UserItem({
 
   return (
     <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      padding: onlyAvatar ? '' : '10px 12px',
-      border: border && !onlyAvatar ? '1px solid #ccc' : '',
-      borderRadius: squared ? '' : '8px',
-      flexDirection: reverse ? 'row-reverse' : 'row',
-      boxShadow: shadow && border ? '-1px 0px 16px 0px rgba(0,0,0,.05)' : '',
-      width: `${onlyAvatar ? 'fit-content' : `${width}px`}`,
-      maxWidth: '100%',
-      gap: '8px',
-      backgroundColor: 'transparent',
-      fontFamily: 'inherit, sans-serif',
-      color: 'black',
-      lineHeight: '1.2',
-      outline: 'none',
-      cursor: disabled ? 'none' : 'pointer',
-      position: 'relative',
-      pointerEvents: disabled ? 'none' : 'all',
-      userSelect: 'none',
-      opacity: disabled ? 0.5 : 1,
       ...style,
     }} onClick={onClickItem}>
       {avatar && <div style={{ position: 'relative' }}>
@@ -86,15 +85,15 @@ export default function UserItem({
           color: 'white',
           display: 'flex',
           alignItems: 'center',
+          backgroundColor: avatarBackgroundColor,
           justifyContent: 'center',
           fontWeight: 800,
-          fontSize: '16px',
+          fontSize: FONT_SIZE,
           outline: 'none',
           maxWidth: AVATAR_SIZE,
           minWidth: AVATAR_SIZE,
           maxHeight: AVATAR_SIZE,
           minHeight: AVATAR_SIZE,
-          backgroundColor: backgroundColor || '#ccc',
           backgroundImage: `url(${avatarUrl})`,
           backgroundSize: "cover",
           borderRadius: squared ? '' : '100px'
@@ -112,7 +111,7 @@ export default function UserItem({
           right: squared ? '-6px' : 0
         }} />}
       </div>}
-      {!onlyAvatar && <div style={{
+      <div style={{
         textAlign: reverse ? 'right' : 'left',
         flexDirection: reverse ? 'row-reverse' : 'row',
         width: 'calc(80%)'
@@ -127,7 +126,7 @@ export default function UserItem({
           <div style={{
             color: 'black',
             fontWeight: 600,
-            fontSize: '15px',
+            fontSize: FONT_SIZE,
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis'
@@ -137,12 +136,12 @@ export default function UserItem({
         {description && <div style={{
           color: '#AAA',
           fontWeight: 500,
-          fontSize: '14px',
+          fontSize: FONT_SIZE,
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           textOverflow: 'ellipsis'
         }}>{description}</div>}
-      </div>}
+      </div>
     </div>
   );
 }
