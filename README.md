@@ -1,5 +1,10 @@
 # useritem
 
+<div style="border:1px solid #dc2626;background:#fee2e2;padding:12px;border-radius:6px;">
+  <strong>Deprecated</strong><br />
+  This package is deprecated. You can now use <strong>UserItem</strong> as a component on <a href="https://useritem.dev">useritem.dev</a>.
+</div>
+
 ## Get Started
 
 To use the UserItem component in your React/Next.js application, you can install it via npm or yarn:
