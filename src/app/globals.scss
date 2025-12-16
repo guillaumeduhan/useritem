@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+html {
+  @apply bg-gradient-to-t from-neutral-950 to-neutral-900 text-neutral-300 text-lg;
+}
+
+input {
+  @apply border-neutral-200 dark:border-neutral-700 bg-neutral-800;
+}
+
+span[data-state="checked"] {
+  @apply bg-black dark:bg-neutral-200;
+}
+
+span[data-state="unchecked"] {
+  @apply bg-neutral-500 dark:bg-neutral-700;
+}
+
+button[role="switch"] {
+  @apply border-neutral-200 dark:border-neutral-700 bg-neutral-800;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
