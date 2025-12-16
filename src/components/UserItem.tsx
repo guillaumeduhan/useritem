@@ -23,8 +23,8 @@ const UserItem = ({ data, setData }: { data: UserItemProps, setData: (u: UserIte
 
   const {
     avatar,
-    avatarBackgroundColor,
-    avatarUrl,
+    avatarBackgroundColor = '#ddd',
+    avatarUrl = '',
     border,
     description,
     disabled,
