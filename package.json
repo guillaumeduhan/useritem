@@ -1,6 +1,6 @@
 {
   "name": "useritem",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A fully customizable component to display users.",
   "main": "./dist/useritem.umd.js",
   "module": "./dist/useritem.es.js",
@@ -20,7 +20,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "useritem": "latest"
+    "useritem": "0.3.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.2.0",
